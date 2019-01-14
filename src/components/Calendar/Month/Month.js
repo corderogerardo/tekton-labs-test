@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Weekday from "./Weekday";
-import Day from "./Day";
-import { weekdays, abbreviationForWeekday, getWeeksForMonth } from "./helpers";
+import Weekday from "./../Weekday/Weekday";
+import Day from "./../Day/Day";
+import { weekdays, abbreviationForWeekday, getWeeksForMonth } from "./../CalendarData";
 
 class Month extends Component {
   constructor(props) {

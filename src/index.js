@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './styles/app.scss';
+import Calendar from "./components/Calendar/Calendar";
 
 class App extends Component {
   constructor(props) {
@@ -25,10 +26,10 @@ class App extends Component {
   }
 
   showCalendar(){
-    console.log("click showCalendar");
   }
 
   render() {
+    const { startDate } = this.state;
     let localDateFunction = () => {
       let local = new Date();
       local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
@@ -42,7 +43,7 @@ class App extends Component {
             <input type="date"
                    id="startDate"
                    value={
-                     (this.state.startDate == null) ? localDateFunction() : this.state.startDate
+                     (startDate == null) ? localDateFunction() : startDate
                    }
                    onChange={this.handleDateChange}/>
           </div>
@@ -56,8 +57,30 @@ class App extends Component {
           </div>
           <button onClick={this.showCalendar}>Submit</button>
         </div>
+        <div className="CalendarContainer">
+          {this.renderCalendar(startDate)}
+        </div>
       </div>
     );
+  }
+
+  renderCalendar(startDate){
+    if(startDate == null) return;
+    return (
+      <Calendar fullDate={startDate} onDayClick={this.onDayClick} />
+    )
+  }
+
+  onDayClick(newDay) {
+    const { selectedDate } = this.state;
+
+    this.setState({
+      startDate: new Date(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        newDay
+      )
+    });
   }
 }
 
