@@ -83,9 +83,9 @@ class Month extends Component {
 }
 
 Month.propTypes = {
-  month: PropTypes.func,
-  year: PropTypes.func,
-  date: PropTypes.object,
+  month: PropTypes.number,
+  year: PropTypes.number,
+  date: PropTypes.number,
   onDayClick: PropTypes.func
 };
 

@@ -9,9 +9,11 @@ class Calendar extends Component {
   render() {
     const { fullDate, onDayClick } = this.props;
 
-    const dateNumber = fullDate.getDate();
-    const monthNumber = fullDate.getMonth();
-    const yearNumber = fullDate.getFullYear();
+    let newDate = new Date(fullDate);
+
+    const dateNumber = newDate.getDate();
+    const monthNumber = newDate.getMonth();
+    const yearNumber = newDate.getFullYear();
     const monthName = getMonthName(monthNumber);
 
     return (
@@ -29,7 +31,7 @@ class Calendar extends Component {
 }
 
 Calendar.propTypes = {
-  fullDate: PropTypes.func,
+  fullDate: PropTypes.string,
   onDayClick: PropTypes.func,
 };
 

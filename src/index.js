@@ -15,6 +15,7 @@ class App extends Component {
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleWorkDaysChange = this.handleWorkDaysChange.bind(this);
     this.showCalendar = this.showCalendar.bind(this);
+    this.renderCalendar = this.renderCalendar.bind(this);
   }
 
   handleDateChange(e){
@@ -26,6 +27,9 @@ class App extends Component {
   }
 
   showCalendar(){
+  }
+
+  componentDidMount() {
   }
 
   render() {
@@ -65,10 +69,19 @@ class App extends Component {
   }
 
   renderCalendar(startDate){
-    if(startDate == null) return;
-    return (
-      <Calendar fullDate={startDate} onDayClick={this.onDayClick} />
-    )
+    let local = new Date();
+    let newLocalDate;
+    local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+    newLocalDate = local.toJSON().slice(0,10);
+    if(startDate==null){
+      return (
+        <Calendar fullDate={newLocalDate} onDayClick={this.onDayClick} />
+      )
+    }else{
+      return (
+        <Calendar fullDate={startDate} onDayClick={this.onDayClick} />
+      );
+    }
   }
 
   onDayClick(newDay) {
