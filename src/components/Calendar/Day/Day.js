@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export default function Day({
                               fullDate,
@@ -33,3 +34,12 @@ export default function Day({
     </button>
   );
 }
+
+Day.propTypes = {
+  fullDate: PropTypes.func,
+  onClick: PropTypes.func,
+  selected: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  hovering: PropTypes.func,
+};

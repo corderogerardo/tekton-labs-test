@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import Month from "./Month/Month";
 import { getMonthName } from "./CalendarData";
@@ -26,5 +27,10 @@ class Calendar extends Component {
     );
   }
 }
+
+Calendar.propTypes = {
+  fullDate: PropTypes.func,
+  onDayClick: PropTypes.func,
+};
 
 export default Calendar;

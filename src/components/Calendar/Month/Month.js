@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import Weekday from "./../Weekday/Weekday";
 import Day from "./../Day/Day";
@@ -80,5 +81,12 @@ class Month extends Component {
     });
   }
 }
+
+Month.propTypes = {
+  month: PropTypes.func,
+  year: PropTypes.func,
+  date: PropTypes.object,
+  onDayClick: PropTypes.func
+};
 
 export default Month;

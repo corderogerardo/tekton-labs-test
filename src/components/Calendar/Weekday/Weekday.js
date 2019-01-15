@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 export default function Weekday({ label, title }) {
   return (
@@ -7,3 +8,8 @@ export default function Weekday({ label, title }) {
     </div>
   );
 }
+
+Weekday.propTypes = {
+  label: PropTypes.string,
+  title: PropTypes.string
+};
